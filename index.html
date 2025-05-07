@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulir Pembayaran</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #6c63ff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #574fd6;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registrasi Pembayaran</h2>
+        <form action="proses_pembayaran.php" method="POST">
+            <label>Nama Lengkap:</label>
+            <input type="text" name="nama_lengkap" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Nomor HP:</label>
+            <input type="text" name="nomor_hp">
+
+            <label>Jumlah Pembayaran:</label>
+            <input type="number" name="jumlah_pembayaran" step="0.01" required>
+
+            <label>Metode Pembayaran:</label>
+            <select name="metode_pembayaran" required>
+                <option value="">-- Pilih Metode --</option>
+                <option value="Transfer Bank">Transfer Bank</option>
+                <option value="QRIS">QRIS</option>
+                <option value="Cash">Cash</option>
+                <option value="E-Wallet">E-Wallet</option>
+            </select>
+
+            <input type="submit" value="Kirim Pembayaran">
+        </form>
+        <form action="proses_pembayaran.php" method="POST" enctype="multipart/form-data">
+            <!-- ... input lain tetap ... -->
+            
+            <label>Upload Bukti Pembayaran (PDF/JPG/PNG):</label><br>
+            <input type="file" name="bukti_pembayaran" accept=".pdf,.jpg,.jpeg,.png" required><br><br>
+        
+            <input type="submit" value="Kirim Pembayaran">
+        </form>
+    </div>
+</body>
+</html>
+
